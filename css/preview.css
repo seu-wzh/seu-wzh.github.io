@@ -1,0 +1,19 @@
+.katex {
+    font-size: 16px !important;
+    text-indent: 0;
+    text-rendering: auto;
+}
+table {
+    width: 100%;
+    display: table !important;
+}
+th {
+    font-weight: bold !important;
+    background-color: #f2f2f2;
+}
+h1 {
+    font-weight: bold !important;
+}
+td, th {
+    height: 50px !important;
+}
