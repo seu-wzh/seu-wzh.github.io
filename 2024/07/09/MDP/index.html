@@ -18,7 +18,7 @@
   
     <meta name="description" content="马尔可夫决策过程（MDP）  基础定义 MDP 在 MRP 的基础上加入了动作，一个 MDP 模型 M\mathscr{M}M 可以形式化定义为元组 ⟨S, A, P, R, γ⟩\langle \mathcal{S},\ \mathcal{A},\ \mathcal{P},\ \mathcal{R},\ \gamma \rangle⟨S, A, P, R, γ⟩：  有限状态集合 S&#x3D;{s1,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MDP">
+<meta property="og:title" content="Markov Decision Process">
 <meta property="og:url" content="http://example.com/2024/07/09/MDP/index.html">
 <meta property="og:site_name" content="木辛的个人博客">
 <meta property="og:description" content="马尔可夫决策过程（MDP）  基础定义 MDP 在 MRP 的基础上加入了动作，一个 MDP 模型 M\mathscr{M}M 可以形式化定义为元组 ⟨S, A, P, R, γ⟩\langle \mathcal{S},\ \mathcal{A},\ \mathcal{P},\ \mathcal{R},\ \gamma \rangle⟨S, A, P, R, γ⟩：  有限状态集合 S&#x3D;{s1,">
@@ -26,10 +26,11 @@
 <meta property="og:image" content="http://example.com/2024/07/09/MDP/policy%20space.svg">
 <meta property="og:image" content="http://example.com/2024/07/09/MDP/mdp.svg">
 <meta property="article:published_time" content="2024-07-09T04:00:00.000Z">
-<meta property="article:modified_time" content="2024-07-30T11:21:23.646Z">
+<meta property="article:modified_time" content="2024-08-01T04:14:54.251Z">
 <meta property="article:author" content="木辛">
-<meta property="article:tag" content="RL">
-<meta property="article:tag" content="Preliminary">
+<meta property="article:tag" content="Bellman Expectation Equation">
+<meta property="article:tag" content="MDP">
+<meta property="article:tag" content="Bellman Optimal Equation">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2024/07/09/MDP/policy%20space.svg">
   
@@ -37,7 +38,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>MDP - 木辛的个人博客</title>
+  <title>Markov Decision Process - 木辛的个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -209,7 +210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="MDP"></span>
+            <span id="subtitle" data-typed-text="Markov Decision Process"></span>
           
         </div>
 
@@ -288,7 +289,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">MDP</h1>
+            <h1 id="seo-header">Markov Decision Process</h1>
             
             
               <div class="markdown-body">
@@ -561,6 +562,20 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
   <a href="/categories/RL/" class="category-chain-item">RL</a>
   
   
+    <span>></span>
+    
+  <a href="/categories/RL/Basics/" class="category-chain-item">Basics</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/RL/Basics/Preliminary/" class="category-chain-item">Preliminary</a>
+  
+  
+
+  
+
+  
 
       </span>
     
@@ -573,9 +588,11 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/RL/" class="print-no-link">#RL</a>
+        <a href="/tags/Bellman-Expectation-Equation/" class="print-no-link">#Bellman Expectation Equation</a>
       
-        <a href="/tags/Preliminary/" class="print-no-link">#Preliminary</a>
+        <a href="/tags/MDP/" class="print-no-link">#MDP</a>
+      
+        <a href="/tags/Bellman-Optimal-Equation/" class="print-no-link">#Bellman Optimal Equation</a>
       
     </div>
   
@@ -587,7 +604,7 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>MDP</div>
+      <div>Markov Decision Process</div>
       <div>http://example.com/2024/07/09/MDP/</div>
     </div>
     <div class="license-meta">
@@ -632,9 +649,9 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/10/POMDP/" title="POMDP">
+                      <a href="/2024/07/10/POMDP/" title="Partially Observable Markov Decision Process">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">POMDP</span>
+                        <span class="hidden-mobile">Partially Observable Markov Decision Process</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -642,8 +659,8 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/08/MRP/" title="MRP">
-                        <span class="hidden-mobile">MRP</span>
+                      <a href="/2024/07/08/MRP/" title="Markov Reward Process">
+                        <span class="hidden-mobile">Markov Reward Process</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
