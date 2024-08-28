@@ -16,19 +16,19 @@
   <meta name="author" content="木辛">
   <meta name="keywords" content="">
   
-    <meta name="description" content="MuZero: Algorithm  12345678910111213@article&#123;schrittwieser2020mastering,  title&#x3D;&#123;Mastering atari, go, chess and shogi by planning with a learned model&#125;,  author&#x3D;&#123;Schrittwieser, Ju">
+    <meta name="description" content="MuZero   	  Planning MuZero makes decision via MCTS with UCB with learned representation, dynamics, policy and value model  	  Each internal state sss in the search tree maintains a set of statistics">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model">
+<meta property="og:title" content="MuZero">
 <meta property="og:url" content="http://example.com/2024/08/02/MuZero/index.html">
 <meta property="og:site_name" content="SEU-WZH">
-<meta property="og:description" content="MuZero: Algorithm  12345678910111213@article&#123;schrittwieser2020mastering,  title&#x3D;&#123;Mastering atari, go, chess and shogi by planning with a learned model&#125;,  author&#x3D;&#123;Schrittwieser, Ju">
+<meta property="og:description" content="MuZero   	  Planning MuZero makes decision via MCTS with UCB with learned representation, dynamics, policy and value model  	  Each internal state sss in the search tree maintains a set of statistics">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2024/08/02/MuZero/muzero.png">
 <meta property="og:image" content="http://example.com/2024/08/02/MuZero/planning.png">
 <meta property="og:image" content="http://example.com/2024/08/02/MuZero/actting.png">
 <meta property="og:image" content="http://example.com/2024/08/02/MuZero/training.png">
 <meta property="article:published_time" content="2024-08-02T04:00:00.000Z">
-<meta property="article:modified_time" content="2024-08-04T09:38:44.487Z">
+<meta property="article:modified_time" content="2024-08-26T08:39:22.450Z">
 <meta property="article:author" content="木辛">
 <meta property="article:tag" content="MCTS">
 <meta property="article:tag" content="MuZero">
@@ -39,7 +39,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model - SEU-WZH</title>
+  <title>MuZero - SEU-WZH</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model"></span>
+            <span id="subtitle" data-typed-text="MuZero"></span>
           
         </div>
 
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          918 字
+          863 字
         
       </span>
     
@@ -290,26 +290,14 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model</h1>
+            <h1 id="seo-header">MuZero</h1>
             
             
               <div class="markdown-body">
                 
                 <center>
-<h1 id="muzero-algorithm">MuZero: Algorithm</h1>
+<h1 id="muzero">MuZero</h1>
 </center>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bibtex">@article&#123;schrittwieser2020mastering,<br>  title=&#123;Mastering atari, go, chess and shogi by planning with a learned model&#125;,<br>  author=&#123;Schrittwieser, Julian and Antonoglou, Ioannis and Hubert, <br>          Thomas and Simonyan, Karen and Sifre, Laurent and Schmitt, <br>          Simon and Guez, Arthur and Lockhart, Edward and Hassabis, <br>          Demis and Graepel, Thore and others&#125;,<br>  journal=&#123;Nature&#125;,<br>  volume=&#123;588&#125;,<br>  number=&#123;7839&#125;,<br>  pages=&#123;604--609&#125;,<br>  year=&#123;2020&#125;,<br>  publisher=&#123;Nature Publishing Group&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><strong>background and motivations</strong></p>
-<ol>
-<li><strong>tree-based planning</strong> methods have enjoyed huge success in challenging but <strong>completely known</strong> domains</li>
-<li><strong>dynamics</strong> of the environment in most <strong>real-world</strong> problems are often <strong>complex and unknown</strong></li>
-</ol>
-<p><strong>highlights and contributions</strong></p>
-<ol>
-<li>applies <strong>MCTS</strong> with a learned model without domain knowledge on underlying dynamics</li>
-<li>trains model jointly by <strong>predicting reward, policy, and state value</strong></li>
-<li><strong>internal state</strong> in MCTS has <strong>no special semantics</strong> beyond its support for future predictions</li>
-</ol>
 <center>
 	<img src="muzero.png" srcset="/img/loading.gif" lazyload width="600">
 </center>
@@ -464,15 +452,8 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
   
     <span>></span>
     
-  <a href="/categories/RL/Frontier/" class="category-chain-item">Frontier</a>
+  <a href="/categories/RL/Model-Based/" class="category-chain-item">Model-Based</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/RL/Frontier/Model-Based/" class="category-chain-item">Model-Based</a>
-  
-  
-
   
 
   
@@ -502,7 +483,7 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model</div>
+      <div>MuZero</div>
       <div>http://example.com/2024/08/02/MuZero/</div>
     </div>
     <div class="license-meta">
@@ -547,9 +528,9 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/08/03/MBPO/" title="When to Trust Your Model: Model-Based Policy Optimization">
+                      <a href="/2024/08/03/MBPO/" title="MBPO">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">When to Trust Your Model: Model-Based Policy Optimization</span>
+                        <span class="hidden-mobile">MBPO</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -557,8 +538,8 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/08/01/Dreamer/" title="DREAM TO CONTROL: LEARNING BEHAVIORS BY LATENT IMAGINATION">
-                        <span class="hidden-mobile">DREAM TO CONTROL: LEARNING BEHAVIORS BY LATENT IMAGINATION</span>
+                      <a href="/2024/08/01/Dreamer/" title="Dreamer">
+                        <span class="hidden-mobile">Dreamer</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

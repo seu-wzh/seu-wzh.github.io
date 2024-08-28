@@ -16,22 +16,20 @@
   <meta name="author" content="木辛">
   <meta name="keywords" content="">
   
-    <meta name="description" content="TD-MPC: Algorithm  12345678910111213@article&#123;hansen2022temporal,    title&#x3D;&#123;Temporal difference learning for model predictive control&#125;,    author&#x3D;&#123;Hansen, Nicklas and Wang, Xiaolon">
+    <meta name="description" content="TD-MPC  Model Predictive Path Integral（MPPI） TD-MPC adapts MPPI as inference algorithm，where action trajectory is sampled from a time-dependent multivariate Gaussian with diagonal covariance over a h">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Temporal Difference Learning for Model Predictive Control">
+<meta property="og:title" content="TD-MPC">
 <meta property="og:url" content="http://example.com/2024/07/31/TD-MPC/index.html">
 <meta property="og:site_name" content="SEU-WZH">
-<meta property="og:description" content="TD-MPC: Algorithm  12345678910111213@article&#123;hansen2022temporal,    title&#x3D;&#123;Temporal difference learning for model predictive control&#125;,    author&#x3D;&#123;Hansen, Nicklas and Wang, Xiaolon">
+<meta property="og:description" content="TD-MPC  Model Predictive Path Integral（MPPI） TD-MPC adapts MPPI as inference algorithm，where action trajectory is sampled from a time-dependent multivariate Gaussian with diagonal covariance over a h">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2024/07/31/TD-MPC/td-mpc.png">
 <meta property="og:image" content="http://example.com/2024/07/31/TD-MPC/td-mpc(alg).png">
 <meta property="og:image" content="http://example.com/2024/07/31/TD-MPC/told.png">
 <meta property="og:image" content="http://example.com/2024/07/31/TD-MPC/told(alg).png">
 <meta property="article:published_time" content="2024-07-31T06:00:00.000Z">
-<meta property="article:modified_time" content="2024-08-02T15:40:12.991Z">
+<meta property="article:modified_time" content="2024-08-26T08:43:32.910Z">
 <meta property="article:author" content="木辛">
-<meta property="article:tag" content="Representation Learning">
-<meta property="article:tag" content="TD">
 <meta property="article:tag" content="MPC">
 <meta property="article:tag" content="TD-MPC">
 <meta name="twitter:card" content="summary_large_image">
@@ -41,7 +39,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Temporal Difference Learning for Model Predictive Control - SEU-WZH</title>
+  <title>TD-MPC - SEU-WZH</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Temporal Difference Learning for Model Predictive Control"></span>
+            <span id="subtitle" data-typed-text="TD-MPC"></span>
           
         </div>
 
@@ -236,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          911 字
+          818 字
         
       </span>
     
@@ -247,7 +245,7 @@
         
         
         
-          8 分钟
+          7 分钟
         
       </span>
     
@@ -292,39 +290,14 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Temporal Difference Learning for Model Predictive Control</h1>
+            <h1 id="seo-header">TD-MPC</h1>
             
             
               <div class="markdown-body">
                 
                 <center>
-<h1 id="td-mpc-algorithm">TD-MPC: Algorithm</h1>
+<h1 id="td-mpc">TD-MPC</h1>
 </center>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bibtex">@article&#123;hansen2022temporal,<br>    title=&#123;Temporal difference learning for model predictive control&#125;,<br>    author=&#123;Hansen, Nicklas and Wang, Xiaolong and Su, Hao&#125;,<br>    journal=&#123;arXiv preprint arXiv:2203.04955&#125;,<br>    year=&#123;2022&#125;<br>&#125;<br><br>@inproceedings&#123;Hansen2022tdmpc,<br>    title=&#123;Temporal Difference Learning for Model Predictive Control&#125;,<br>    author=&#123;Nicklas Hansen and Xiaolong Wang and Hao Su&#125;,<br>    booktitle=&#123;ICML&#125;,<br>    year=&#123;2022&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><strong>background and motivations:</strong></p>
-<ol>
-<li>
-<p><strong>advantages</strong> of MPC:</p>
-<ol>
-<li>a potential for improved <strong>sample efficiency</strong> through model learning</li>
-<li>better performance as computational budget for planning increases</li>
-</ol>
-</li>
-<li>
-<p><strong>challenges</strong> of MPC:</p>
-<ol>
-<li>optimize on short-term rollout rather than long-term return (<strong>myoptic</strong>)</li>
-<li>difficult to learn an <strong>accurate world model</strong></li>
-<li><strong>costly</strong> and <strong>inaccurately</strong> to plan over <strong>long horizons</strong> based on world model</li>
-</ol>
-</li>
-</ol>
-<p><strong>highlights and contributions:</strong></p>
-<ol>
-<li>use task-oriented latent <strong>dynamics model</strong> for <strong>short-term rollout</strong></li>
-<li>use terminal <strong>value function</strong> to estimate <strong>long-term return</strong></li>
-<li>jointly learned through <strong>temporal difference</strong> method</li>
-</ol>
 <h2 id="model-predictive-path-integral-mppi">Model Predictive Path Integral（MPPI）</h2>
 <p>TD-MPC adapts MPPI as inference algorithm，where action trajectory is sampled from a time-dependent multivariate Gaussian with diagonal covariance over a horizon of length <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi></mrow><annotation encoding="application/x-tex">H</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span></span></span></span></p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo fence="false">{</mo><mi mathvariant="script">N</mi><mo stretchy="false">(</mo><msub><mi>μ</mi><mi>τ</mi></msub><mo separator="true">,</mo><mtext> </mtext><msubsup><mi>σ</mi><mi>τ</mi><mn>2</mn></msubsup><mo stretchy="false">)</mo><msubsup><mo fence="false">}</mo><mrow><mi>τ</mi><mo>=</mo><mn>0</mn></mrow><mi>H</mi></msubsup><mo>⇐</mo><msub><mi>μ</mi><mi>τ</mi></msub><mo separator="true">,</mo><mtext> </mtext><msub><mi>σ</mi><mi>τ</mi></msub><mo>∈</mo><msup><mi mathvariant="double-struck">R</mi><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="script">A</mi><mi mathvariant="normal">∣</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\Big\{ \mathcal{N}(\mu_{\tau},\ \sigma_{\tau}^{2}) \Big\}_{\tau = 0}^{H} \Leftarrow \mu_{\tau},\ \sigma_{\tau} \in \mathbb{R}^{|\mathcal{A}|}
@@ -429,7 +402,7 @@ c-4-3.333-8.333-7.667-13 -13l-13-13l77-155 77-156c66 199.333 139 419.667
 </tr>
 <tr>
 <td style="text-align:center">latent state consistency loss</td>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">L</mi><mi>c</mi></msub><mo stretchy="false">(</mo><mi>θ</mi><mo separator="true">;</mo><mtext> </mtext><msub><mi mathvariant="normal">Γ</mi><mi>τ</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mo fence="false">∥</mo><msub><mi>d</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><msub><mi>z</mi><mi>τ</mi></msub><mo separator="true">,</mo><mtext> </mtext><msub><mi>a</mi><mi>τ</mi></msub><mo stretchy="false">)</mo><mo>−</mo><msub><mi>h</mi><msup><mi>θ</mi><mo lspace="0em" rspace="0em">−</mo></msup></msub><mo stretchy="false">(</mo><msub><mi>s</mi><mrow><mi>τ</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo><msubsup><mo fence="false">∥</mo><mn>2</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\mathcal{L}_{c}(\theta;\ \Gamma_{\tau}) = \Big\| d_{\theta}(z_{\tau},\ a_{\tau}) - h_{\theta^{-}}(s_{\tau + 1}) \Big\|_{2}^{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord"><span class="mord mathcal">L</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace"> </span><span class="mord"><span class="mord">Γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.1132em;">τ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.8239899999999998em;vertical-align:-0.6500149999999999em;"></span><span class="mord"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.173975em;"><span style="top:-1.955985em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∥</span></span></span><span style="top:-2.556985em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∥</span></span></span><span style="top:-2.572975em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∥</span></span></span><span style="top:-3.173975em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∥</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6500149999999999em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.1132em;">τ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace"> </span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.1132em;">τ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.077698em;vertical-align:-0.6997149999999999em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.341865em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7026642857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">−</span></span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.1132em;">τ</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord"><span class="mord"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.173975em;"><span style="top:-1.955985em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∥</span></span></span><span style="top:-2.556985em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∥</span></span></span><span style="top:-2.572975em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∥</span></span></span><span style="top:-3.173975em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∥</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6500149999999999em;"><span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3779829999999997em;"><span style="top:-2.0002850000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.626875em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6997149999999999em;"><span></span></span></span></span></span></span></span></span></span></td>
+<td style="text-align:center">$\mathcal{L}<em>{c}(\theta;\ \Gamma</em>{\tau}) = \Big\</td>
 </tr>
 </tbody>
 </table>
@@ -462,15 +435,8 @@ c-4-3.333-8.333-7.667-13 -13l-13-13l77-155 77-156c66 199.333 139 419.667
   
     <span>></span>
     
-  <a href="/categories/RL/Frontier/" class="category-chain-item">Frontier</a>
+  <a href="/categories/RL/Model-Based/" class="category-chain-item">Model-Based</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/RL/Frontier/Model-Based/" class="category-chain-item">Model-Based</a>
-  
-  
-
   
 
   
@@ -486,10 +452,6 @@ c-4-3.333-8.333-7.667-13 -13l-13-13l77-155 77-156c66 199.333 139 419.667
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Representation-Learning/" class="print-no-link">#Representation Learning</a>
-      
-        <a href="/tags/TD/" class="print-no-link">#TD</a>
-      
         <a href="/tags/MPC/" class="print-no-link">#MPC</a>
       
         <a href="/tags/TD-MPC/" class="print-no-link">#TD-MPC</a>
@@ -504,7 +466,7 @@ c-4-3.333-8.333-7.667-13 -13l-13-13l77-155 77-156c66 199.333 139 419.667
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Temporal Difference Learning for Model Predictive Control</div>
+      <div>TD-MPC</div>
       <div>http://example.com/2024/07/31/TD-MPC/</div>
     </div>
     <div class="license-meta">
@@ -549,9 +511,9 @@ c-4-3.333-8.333-7.667-13 -13l-13-13l77-155 77-156c66 199.333 139 419.667
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/08/01/Dreamer/" title="DREAM TO CONTROL: LEARNING BEHAVIORS BY LATENT IMAGINATION">
+                      <a href="/2024/08/01/Dreamer/" title="Dreamer">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">DREAM TO CONTROL: LEARNING BEHAVIORS BY LATENT IMAGINATION</span>
+                        <span class="hidden-mobile">Dreamer</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

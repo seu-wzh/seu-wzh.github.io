@@ -16,21 +16,19 @@
   <meta name="author" content="木辛">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Dreamer: Algorithm  123456789101112@article&#123;hafner2019dream,  title&#x3D;&#123;Dream to control: Learning behaviors by latent imagination&#125;,  author&#x3D;&#123;Hafner, Danijar and Lillicrap, Timothy a">
+    <meta name="description" content="Dreamer  General Structure    Component Type Description Definition     representation world model latent state encoder pθ(st∣st−1, at−1, ot)p_{\theta}(s_{t} \mid s_{t - 1},\ a_{t - 1},\ o_{t})pθ​(st">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DREAM TO CONTROL: LEARNING BEHAVIORS BY LATENT IMAGINATION">
+<meta property="og:title" content="Dreamer">
 <meta property="og:url" content="http://example.com/2024/08/01/Dreamer/index.html">
 <meta property="og:site_name" content="SEU-WZH">
-<meta property="og:description" content="Dreamer: Algorithm  123456789101112@article&#123;hafner2019dream,  title&#x3D;&#123;Dream to control: Learning behaviors by latent imagination&#125;,  author&#x3D;&#123;Hafner, Danijar and Lillicrap, Timothy a">
+<meta property="og:description" content="Dreamer  General Structure    Component Type Description Definition     representation world model latent state encoder pθ(st∣st−1, at−1, ot)p_{\theta}(s_{t} \mid s_{t - 1},\ a_{t - 1},\ o_{t})pθ​(st">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2024/08/01/Dreamer/dreamer.png">
 <meta property="og:image" content="http://example.com/2024/08/01/Dreamer/dreamer(alg).png">
 <meta property="og:image" content="http://example.com/2024/08/01/Dreamer/comparison.png">
 <meta property="article:published_time" content="2024-08-01T04:00:00.000Z">
-<meta property="article:modified_time" content="2024-08-04T09:43:08.718Z">
+<meta property="article:modified_time" content="2024-08-26T08:39:20.054Z">
 <meta property="article:author" content="木辛">
-<meta property="article:tag" content="AC">
-<meta property="article:tag" content="Representation Learning">
 <meta property="article:tag" content="Dreamer">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2024/08/01/Dreamer/dreamer.png">
@@ -39,7 +37,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>DREAM TO CONTROL: LEARNING BEHAVIORS BY LATENT IMAGINATION - SEU-WZH</title>
+  <title>Dreamer - SEU-WZH</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +209,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="DREAM TO CONTROL: LEARNING BEHAVIORS BY LATENT IMAGINATION"></span>
+            <span id="subtitle" data-typed-text="Dreamer"></span>
           
         </div>
 
@@ -234,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          764 字
+          671 字
         
       </span>
     
@@ -245,7 +243,7 @@
         
         
         
-          7 分钟
+          6 分钟
         
       </span>
     
@@ -290,24 +288,14 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">DREAM TO CONTROL: LEARNING BEHAVIORS BY LATENT IMAGINATION</h1>
+            <h1 id="seo-header">Dreamer</h1>
             
             
               <div class="markdown-body">
                 
                 <center>
-<h1 id="dreamer-algorithm">Dreamer: Algorithm</h1>
+<h1 id="dreamer">Dreamer</h1>
 </center>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bibtex">@article&#123;hafner2019dream,<br>  title=&#123;Dream to control: Learning behaviors by latent imagination&#125;,<br>  author=&#123;Hafner, Danijar and Lillicrap, Timothy and Ba, Jimmy and Norouzi, Mohammad&#125;,<br>  journal=&#123;arXiv preprint arXiv:1912.01603&#125;,<br>  year=&#123;2019&#125;<br>&#125;<br><br>@inproceedings&#123;hafnerdream,<br>  title=&#123;Dream to Control: Learning Behaviors by Latent Imagination&#125;,<br>  author=&#123;Hafner, Danijar and Lillicrap, Timothy and Ba, Jimmy and Norouzi, Mohammad&#125;,<br>  booktitle=&#123;International Conference on Learning Representations&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><strong>background and motivations</strong></p>
-<ol>
-<li>world models from <strong>high-dimensional</strong> sensory inputs can be learned through DL</li>
-</ol>
-<p><strong>highlights and contributions</strong></p>
-<ol>
-<li>learns long-horizon behaviors purely by <strong>latent imagination</strong></li>
-<li>optimize actor by propagating gradients of <strong>multi-step values</strong> back through latent dynamics</li>
-</ol>
 <h2 id="general-structure">General Structure</h2>
 <table>
 <thead>
@@ -420,7 +408,7 @@
 </tr>
 <tr>
 <td style="text-align:center">KL regularizer</td>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi mathvariant="script">J</mi><mi mathvariant="normal">D</mi><mi>t</mi></msubsup><mo>=</mo><mo>−</mo><mi>β</mi><mi mathvariant="normal">KL</mi><mo>⁡</mo><mo fence="false">(</mo><mi>p</mi><mo stretchy="false">(</mo><msub><mi>s</mi><mi>t</mi></msub><mo>∣</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><mtext> </mtext><msub><mi>a</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><mtext> </mtext><msub><mi>o</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mtext> </mtext><mo fence="false">∥</mo><mtext> </mtext><mi>q</mi><mo stretchy="false">(</mo><msub><mi>s</mi><mi>t</mi></msub><mo>∣</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><mtext> </mtext><msub><mi>a</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo><mo fence="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{J}_{\mathrm{D}}^{t} = -\beta \operatorname{KL} \Big( p(s_{t} \mid s_{t - 1},\ a_{t - 1},\ o_{t})\ \Big\|\ q(s_{t} \mid s_{t - 1},\ a_{t - 1}) \Big)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.068887em;vertical-align:-0.275331em;"></span><span class="mord"><span class="mord"><span class="mord mathcal" style="margin-right:0.18472em;">J</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7935559999999999em;"><span style="top:-2.424669em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">D</span></span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.275331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.80002em;vertical-align:-0.65002em;"></span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mord mathrm">K</span><span class="mord mathrm">L</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="delimsizing size2">(</span></span><span class="mord mathdefault">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.8239899999999998em;vertical-align:-0.6500149999999999em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace"> </span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace"> </span><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace"> </span><span class="mord"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.173975em;"><span style="top:-1.955985em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∥</span></span></span><span style="top:-2.556985em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∥</span></span></span><span style="top:-2.572975em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∥</span></span></span><span style="top:-3.173975em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∥</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6500149999999999em;"><span></span></span></span></span></span></span><span class="mspace"> </span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.80002em;vertical-align:-0.65002em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace"> </span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord"><span class="delimsizing size2">)</span></span></span></span></span></td>
+<td style="text-align:center">$\mathcal{J}<em>{\mathrm{D}}^{t} = -\beta \operatorname{KL} \Big( p(s</em>{t} \mid s_{t - 1},\ a_{t - 1},\ o_{t})\ \Big\</td>
 </tr>
 </tbody>
 </table>
@@ -456,15 +444,8 @@
   
     <span>></span>
     
-  <a href="/categories/RL/Frontier/" class="category-chain-item">Frontier</a>
+  <a href="/categories/RL/Model-Based/" class="category-chain-item">Model-Based</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/RL/Frontier/Model-Based/" class="category-chain-item">Model-Based</a>
-  
-  
-
   
 
   
@@ -480,10 +461,6 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/AC/" class="print-no-link">#AC</a>
-      
-        <a href="/tags/Representation-Learning/" class="print-no-link">#Representation Learning</a>
-      
         <a href="/tags/Dreamer/" class="print-no-link">#Dreamer</a>
       
     </div>
@@ -496,7 +473,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>DREAM TO CONTROL: LEARNING BEHAVIORS BY LATENT IMAGINATION</div>
+      <div>Dreamer</div>
       <div>http://example.com/2024/08/01/Dreamer/</div>
     </div>
     <div class="license-meta">
@@ -541,9 +518,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/08/02/MuZero/" title="Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model">
+                      <a href="/2024/08/02/MuZero/" title="MuZero">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model</span>
+                        <span class="hidden-mobile">MuZero</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -551,8 +528,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/31/TD-MPC/" title="Temporal Difference Learning for Model Predictive Control">
-                        <span class="hidden-mobile">Temporal Difference Learning for Model Predictive Control</span>
+                      <a href="/2024/07/31/TD-MPC/" title="TD-MPC">
+                        <span class="hidden-mobile">TD-MPC</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
