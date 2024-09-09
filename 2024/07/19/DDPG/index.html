@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="DPG">
 <meta property="og:url" content="http://example.com/2024/07/19/DDPG/index.html">
-<meta property="og:site_name" content="SEU-WZH">
+<meta property="og:site_name" content="SEU.WZH.MindStorm">
 <meta property="og:description" content="Deterministic Policy Gradient  Deep Deterministic Policy Gradient（DDPG） 在动作空间连续时无法通过策略网络 πθ(a∣s)\pi_{\theta}(a \mid s)πθ​(a∣s) 来参数化策略，此时可以通过确定性策略 μθ(s)\mu_{\theta}(s)μθ​(s) 来进行建模，并在确定性策略空间 D\mathcal{">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2024/07/19/DDPG/dpg.png">
@@ -38,7 +38,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>DPG - SEU-WZH</title>
+  <title>DPG - SEU.WZH.MindStorm</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -82,7 +82,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":5},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -108,7 +108,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>SEU-WZH</strong>
+      <strong>SEU.WZH.MindStorm</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -282,6 +282,617 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="RL"
+        id="heading-7f49bbe2f0af1edb6c6cee353d3e204b" role="tab" data-toggle="collapse" href="#collapse-7f49bbe2f0af1edb6c6cee353d3e204b"
+        aria-expanded="true"
+      >
+        RL
+        <span class="list-group-count">(35)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-7f49bbe2f0af1edb6c6cee353d3e204b"
+           role="tabpanel" aria-labelledby="heading-7f49bbe2f0af1edb6c6cee353d3e204b">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Imitation"
+        id="heading-1b3ed33b29533474215c6a1e3e1efffe" role="tab" data-toggle="collapse" href="#collapse-1b3ed33b29533474215c6a1e3e1efffe"
+        aria-expanded="false"
+      >
+        Imitation
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-1b3ed33b29533474215c6a1e3e1efffe"
+           role="tabpanel" aria-labelledby="heading-1b3ed33b29533474215c6a1e3e1efffe">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/08/08/IL/" title="Imitation Learning"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Imitation Learning</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Maximum-Entropy"
+        id="heading-a54f57c85ce706715bd1a84f18b28af2" role="tab" data-toggle="collapse" href="#collapse-a54f57c85ce706715bd1a84f18b28af2"
+        aria-expanded="false"
+      >
+        Maximum-Entropy
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a54f57c85ce706715bd1a84f18b28af2"
+           role="tabpanel" aria-labelledby="heading-a54f57c85ce706715bd1a84f18b28af2">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/07/19/MERL/" title="Maximum Entropy RL"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Maximum Entropy RL</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/20/SAC/" title="Soft Actor-Critic"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Soft Actor-Critic</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/20/SQL/" title="Soft Q-Learning"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Soft Q-Learning</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Model-Based"
+        id="heading-786a6c59cac8baa0acb68dd07fddcbab" role="tab" data-toggle="collapse" href="#collapse-786a6c59cac8baa0acb68dd07fddcbab"
+        aria-expanded="false"
+      >
+        Model-Based
+        <span class="list-group-count">(13)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-786a6c59cac8baa0acb68dd07fddcbab"
+           role="tabpanel" aria-labelledby="heading-786a6c59cac8baa0acb68dd07fddcbab">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/08/01/Dreamer/" title="Dreamer"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Dreamer</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/09/04/IRIS/" title="IRIS"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">IRIS</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/09/07/LanGWM/" title="LanGWM"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">LanGWM</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/27/MABL/" title="MABL"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">MABL</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/09/01/MACD/" title="MACD"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">MACD</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/31/MAMBA/" title="MAMBA"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">MAMBA</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/MBPO/" title="MBPO"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">MBPO</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/24/MBVD/" title="MBVD"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">MBVD</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/31/MPC/" title="Model Predictive Control"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Model Predictive Control</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/10/MCTS/" title="Monte-Carlo Tree Search"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Monte-Carlo Tree Search</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/02/MuZero/" title="MuZero"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">MuZero</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/PlaNet/" title="PlaNet"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">PlaNet</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/31/TD-MPC/" title="TD-MPC"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">TD-MPC</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Multi-Agent"
+        id="heading-744bab92c1eb1eb31b94a14af0f4da6a" role="tab" data-toggle="collapse" href="#collapse-744bab92c1eb1eb31b94a14af0f4da6a"
+        aria-expanded="false"
+      >
+        Multi-Agent
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-744bab92c1eb1eb31b94a14af0f4da6a"
+           role="tabpanel" aria-labelledby="heading-744bab92c1eb1eb31b94a14af0f4da6a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/08/27/MABL/" title="MABL"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">MABL</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/09/01/MACD/" title="MACD"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">MACD</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/06/MADDPG/" title="MADDPG"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">MADDPG</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/31/MAMBA/" title="MAMBA"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">MAMBA</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/24/MBVD/" title="MBVD"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">MBVD</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/05/MAA2C/" title="Multi-Agent A2C"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Multi-Agent A2C</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/05/MAVL/" title="Multi-Agent Value Learning"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Multi-Agent Value Learning</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/05/SG/" title="Stochastic Game / Markov Game"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Stochastic Game / Markov Game</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Policy-Based"
+        id="heading-69b960f8bf120f5aedca25a9a3fda242" role="tab" data-toggle="collapse" href="#collapse-69b960f8bf120f5aedca25a9a3fda242"
+        aria-expanded="true"
+      >
+        Policy-Based
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-69b960f8bf120f5aedca25a9a3fda242"
+           role="tabpanel" aria-labelledby="heading-69b960f8bf120f5aedca25a9a3fda242">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/07/19/AC/" title="Actor-Critic"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Actor-Critic</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/19/DDPG/" title="DPG"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">DPG</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/19/GP/" title="Gaussian Policy"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Gaussian Policy</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/19/PG/" title="Policy Gradient"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Policy Gradient</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/19/REINFORCE/" title="REINFORCE"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">REINFORCE</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/19/TRPO&amp;PPO/" title="TRPO and PPO"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">TRPO and PPO</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Preliminary"
+        id="heading-4d5cdaeb09f26557fe22b6ff12289344" role="tab" data-toggle="collapse" href="#collapse-4d5cdaeb09f26557fe22b6ff12289344"
+        aria-expanded="false"
+      >
+        Preliminary
+        <span class="list-group-count">(7)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-4d5cdaeb09f26557fe22b6ff12289344"
+           role="tabpanel" aria-labelledby="heading-4d5cdaeb09f26557fe22b6ff12289344">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/07/11/DPRL/" title="Dynamic Programming"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Dynamic Programming</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/09/MDP/" title="Markov Decision Process"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Markov Decision Process</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/08/MRP/" title="Markov Reward Process"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Markov Reward Process</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/19/MERL/" title="Maximum Entropy RL"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Maximum Entropy RL</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/12/MC&amp;TDRL/" title="Monte-Carlo and Temporal Difference"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Monte-Carlo and Temporal Difference</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/10/POMDP/" title="Partially Observable Markov Decision Process"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Partially Observable Markov Decision Process</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/05/SG/" title="Stochastic Game / Markov Game"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Stochastic Game / Markov Game</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Value-Based"
+        id="heading-e682b7932aee3f355d5ad7e1edda14f9" role="tab" data-toggle="collapse" href="#collapse-e682b7932aee3f355d5ad7e1edda14f9"
+        aria-expanded="false"
+      >
+        Value-Based
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-e682b7932aee3f355d5ad7e1edda14f9"
+           role="tabpanel" aria-labelledby="heading-e682b7932aee3f355d5ad7e1edda14f9">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/07/15/DQN/" title="DQN"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">DQN</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/15/TDVL/" title="TD Value Learning"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">TD Value Learning</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/15/VLETC/" title="Useful Value Learning Skills and Technique"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Useful Value Learning Skills and Technique</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
 
     </div>
 
