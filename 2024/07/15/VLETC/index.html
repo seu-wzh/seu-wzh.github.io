@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=light>
+<html lang="en" data-default-color-scheme=light>
 
 
 
@@ -18,15 +18,15 @@
   
     <meta name="description" content="价值学习技巧  经验回放 为了更好地学习 Q 值，可以加入经验回放缓冲区，将交互数据 (s, a, r, s′)(s,\ a,\ r,\ s&#x27;)(s, a, r, s′) 存储在缓冲区并在训练时进行随机采样得到一个批次的训练样本用于训练，既能够使样本满足独立假设，又可以提高样本利用效率。为了平衡常见样本和少见样本的学习，可以在经验回放的基础上加入非均匀抽样，抽样的概率满足： pi∝∣δ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Useful Value Learning Skills and Technique">
+<meta property="og:title" content="Value Learning Technique">
 <meta property="og:url" content="http://example.com/2024/07/15/VLETC/index.html">
 <meta property="og:site_name" content="MindStorm">
 <meta property="og:description" content="价值学习技巧  经验回放 为了更好地学习 Q 值，可以加入经验回放缓冲区，将交互数据 (s, a, r, s′)(s,\ a,\ r,\ s&#x27;)(s, a, r, s′) 存储在缓冲区并在训练时进行随机采样得到一个批次的训练样本用于训练，既能够使样本满足独立假设，又可以提高样本利用效率。为了平衡常见样本和少见样本的学习，可以在经验回放的基础上加入非均匀抽样，抽样的概率满足： pi∝∣δ">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-15T08:00:00.000Z">
-<meta property="article:modified_time" content="2024-08-25T09:15:54.681Z">
+<meta property="article:modified_time" content="2024-09-27T06:04:21.701Z">
 <meta property="article:author" content="木辛">
-<meta property="article:tag" content="Experience Replay">
+<meta property="article:tag" content="ER">
 <meta property="article:tag" content="Target Q">
 <meta property="article:tag" content="Double Q">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Useful Value Learning Skills and Technique - MindStorm</title>
+  <title>Value Learning Technique - MindStorm</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -125,7 +125,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -137,7 +137,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
+                <span>Archives</span>
               </a>
             </li>
           
@@ -149,7 +149,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
+                <span>Categories</span>
               </a>
             </li>
           
@@ -161,7 +161,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
+                <span>Tags</span>
               </a>
             </li>
           
@@ -173,7 +173,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
+                <span>About</span>
               </a>
             </li>
           
@@ -207,7 +207,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Useful Value Learning Skills and Technique"></span>
+            <span id="subtitle" data-typed-text="Value Learning Technique"></span>
           
         </div>
 
@@ -219,7 +219,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2024-07-15 16:00" pubdate>
-          2024年7月15日 下午
+          July 15, 2024 pm
         </time>
       </span>
     
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          1.9k words
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          17 分钟
+          17 mins
         
       </span>
     
@@ -251,7 +251,7 @@
       
         <span id="busuanzi_container_page_pv" style="display: none">
           <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> 次
+          <span id="busuanzi_value_page_pv"></span> views
         </span>
         
       
@@ -299,7 +299,7 @@
         aria-expanded="true"
       >
         RL
-        <span class="list-group-count">(44)</span>
+        <span class="list-group-count">(52)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -315,43 +315,6 @@
   </div>
 
           
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Imitation"
-        id="heading-1b3ed33b29533474215c6a1e3e1efffe" role="tab" data-toggle="collapse" href="#collapse-1b3ed33b29533474215c6a1e3e1efffe"
-        aria-expanded="false"
-      >
-        Imitation
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-1b3ed33b29533474215c6a1e3e1efffe"
-           role="tabpanel" aria-labelledby="heading-1b3ed33b29533474215c6a1e3e1efffe">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2024/08/08/IL/" title="Imitation Learning"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Imitation Learning</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
   
     
     
@@ -467,17 +430,17 @@
     
     <div class="category-sub row nomargin-x">
       <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Maximum-Entropy"
-        id="heading-a54f57c85ce706715bd1a84f18b28af2" role="tab" data-toggle="collapse" href="#collapse-a54f57c85ce706715bd1a84f18b28af2"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Meta-Learning"
+        id="heading-8002ea46fdd1e03e1c6ae83fca32bb87" role="tab" data-toggle="collapse" href="#collapse-8002ea46fdd1e03e1c6ae83fca32bb87"
         aria-expanded="false"
       >
-        Maximum-Entropy
-        <span class="list-group-count">(3)</span>
+        Meta-Learning
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-a54f57c85ce706715bd1a84f18b28af2"
-           role="tabpanel" aria-labelledby="heading-a54f57c85ce706715bd1a84f18b28af2">
+      <div class="category-collapse collapse " id="collapse-8002ea46fdd1e03e1c6ae83fca32bb87"
+           role="tabpanel" aria-labelledby="heading-8002ea46fdd1e03e1c6ae83fca32bb87">
         
         
           
@@ -486,28 +449,19 @@
     
       
       
-        <a href="/2024/07/19/MERL/" title="Maximum Entropy RL"
+        <a href="/2024/10/05/CORRO/" title="CORRO"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Maximum Entropy RL</span>
+          <span class="category-post">CORRO</span>
         </a>
       
     
       
       
-        <a href="/2024/07/20/SAC/" title="Soft Actor-Critic"
+        <a href="/2024/09/30/FOCAL/" title="FOCAL"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Soft Actor-Critic</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/07/20/SQL/" title="Soft Q-Learning"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Soft Q-Learning</span>
+          <span class="category-post">FOCAL</span>
         </a>
       
     
@@ -541,6 +495,15 @@
     
       
       
+        <a href="/2024/09/25/COMBO/" title="COMBO"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">COMBO</span>
+        </a>
+      
+    
+      
+      
         <a href="/2024/08/01/Dreamer/" title="Dreamer"
            class="list-group-item list-group-item-action
            ">
@@ -554,6 +517,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">Dynalang</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/09/27/GenRL/" title="GenRL"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">GenRL</span>
         </a>
       
     
@@ -622,24 +594,6 @@
     
       
       
-        <a href="/2024/07/31/MPC/" title="Model Predictive Control"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Model Predictive Control</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/08/10/MCTS/" title="Monte-Carlo Tree Search"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Monte-Carlo Tree Search</span>
-        </a>
-      
-    
-      
-      
         <a href="/2024/08/02/MuZero/" title="MuZero"
            class="list-group-item list-group-item-action
            ">
@@ -690,7 +644,7 @@
         aria-expanded="false"
       >
         Multi-Agent
-        <span class="list-group-count">(9)</span>
+        <span class="list-group-count">(10)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -701,6 +655,42 @@
           
   <div class="category-post-list">
     
+    
+      
+      
+        <a href="/2024/09/25/COMBO/" title="COMBO"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">COMBO</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/10/04/DCG/" title="DCG"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">DCG</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/10/03/DGN/" title="DGN"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">DGN</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/10/02/DICG/" title="DICG"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">DICG</span>
+        </a>
+      
     
       
       
@@ -717,15 +707,6 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">MACD</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/08/06/MADDPG/" title="MADDPG"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">MADDPG</span>
         </a>
       
     
@@ -749,28 +730,10 @@
     
       
       
-        <a href="/2024/08/05/MAA2C/" title="Multi-Agent A2C"
+        <a href="/2024/09/29/ODIS/" title="ODIS"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Multi-Agent A2C</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/08/05/MAVL/" title="Multi-Agent Value Learning"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Multi-Agent Value Learning</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/08/05/SG/" title="Stochastic Game / Markov Game"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Stochastic Game / Markov Game</span>
+          <span class="category-post">ODIS</span>
         </a>
       
     
@@ -793,18 +756,18 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Policy-Based"
-        id="heading-69b960f8bf120f5aedca25a9a3fda242" role="tab" data-toggle="collapse" href="#collapse-69b960f8bf120f5aedca25a9a3fda242"
-        aria-expanded="false"
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Preliminary"
+        id="heading-4d5cdaeb09f26557fe22b6ff12289344" role="tab" data-toggle="collapse" href="#collapse-4d5cdaeb09f26557fe22b6ff12289344"
+        aria-expanded="true"
       >
-        Policy-Based
-        <span class="list-group-count">(6)</span>
+        Preliminary
+        <span class="list-group-count">(24)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-69b960f8bf120f5aedca25a9a3fda242"
-           role="tabpanel" aria-labelledby="heading-69b960f8bf120f5aedca25a9a3fda242">
+      <div class="category-collapse collapse show" id="collapse-4d5cdaeb09f26557fe22b6ff12289344"
+           role="tabpanel" aria-labelledby="heading-4d5cdaeb09f26557fe22b6ff12289344">
         
         
           
@@ -831,6 +794,24 @@
     
       
       
+        <a href="/2024/07/15/DQN/" title="DQN"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">DQN</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/11/DPRL/" title="Dynamic Programming"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Dynamic Programming</span>
+        </a>
+      
+    
+      
+      
         <a href="/2024/07/19/GP/" title="Gaussian Policy"
            class="list-group-item list-group-item-action
            ">
@@ -840,65 +821,19 @@
     
       
       
-        <a href="/2024/07/19/PG/" title="Policy Gradient"
+        <a href="/2024/08/08/IL/" title="Imitation Learning"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Policy Gradient</span>
+          <span class="category-post">Imitation Learning</span>
         </a>
       
     
       
       
-        <a href="/2024/07/19/REINFORCE/" title="REINFORCE"
+        <a href="/2024/08/06/MADDPG/" title="MADDPG"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">REINFORCE</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/07/19/TRPO&amp;PPO/" title="TRPO and PPO"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">TRPO and PPO</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Preliminary"
-        id="heading-4d5cdaeb09f26557fe22b6ff12289344" role="tab" data-toggle="collapse" href="#collapse-4d5cdaeb09f26557fe22b6ff12289344"
-        aria-expanded="false"
-      >
-        Preliminary
-        <span class="list-group-count">(7)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-4d5cdaeb09f26557fe22b6ff12289344"
-           role="tabpanel" aria-labelledby="heading-4d5cdaeb09f26557fe22b6ff12289344">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2024/07/11/DPRL/" title="Dynamic Programming"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Dynamic Programming</span>
+          <span class="category-post">MADDPG</span>
         </a>
       
     
@@ -931,10 +866,46 @@
     
       
       
+        <a href="/2024/08/11/MPC/" title="Model Predictive Control"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Model Predictive Control</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/10/MCTS/" title="Monte-Carlo Tree Search"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Monte-Carlo Tree Search</span>
+        </a>
+      
+    
+      
+      
         <a href="/2024/07/12/MC&amp;TDRL/" title="Monte-Carlo and Temporal Difference"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">Monte-Carlo and Temporal Difference</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/05/MAA2C/" title="Multi-Agent A2C"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Multi-Agent A2C</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/05/MAVL/" title="Multi-Agent Value Learning"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Multi-Agent Value Learning</span>
         </a>
       
     
@@ -949,47 +920,46 @@
     
       
       
+        <a href="/2024/07/19/PG/" title="Policy Gradient"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Policy Gradient</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/19/REINFORCE/" title="REINFORCE"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">REINFORCE</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/20/SAC/" title="Soft Actor-Critic"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Soft Actor-Critic</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/20/SQL/" title="Soft Q-Learning"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Soft Q-Learning</span>
+        </a>
+      
+    
+      
+      
         <a href="/2024/08/05/SG/" title="Stochastic Game / Markov Game"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">Stochastic Game / Markov Game</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Value-Based"
-        id="heading-e682b7932aee3f355d5ad7e1edda14f9" role="tab" data-toggle="collapse" href="#collapse-e682b7932aee3f355d5ad7e1edda14f9"
-        aria-expanded="true"
-      >
-        Value-Based
-        <span class="list-group-count">(3)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse show" id="collapse-e682b7932aee3f355d5ad7e1edda14f9"
-           role="tabpanel" aria-labelledby="heading-e682b7932aee3f355d5ad7e1edda14f9">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2024/07/15/DQN/" title="DQN"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">DQN</span>
         </a>
       
     
@@ -1004,10 +974,19 @@
     
       
       
-        <a href="/2024/07/15/VLETC/" title="Useful Value Learning Skills and Technique"
+        <a href="/2024/07/19/TRPO&amp;PPO/" title="TRPO and PPO"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">TRPO and PPO</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/15/VLETC/" title="Value Learning Technique"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">Useful Value Learning Skills and Technique</span>
+          <span class="category-post">Value Learning Technique</span>
         </a>
       
     
@@ -1033,7 +1012,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Useful Value Learning Skills and Technique</h1>
+            <h1 id="seo-header">Value Learning Technique</h1>
             
             
               <div class="markdown-body">
@@ -1144,7 +1123,7 @@
   
     <span>></span>
     
-  <a href="/categories/RL/Value-Based/" class="category-chain-item">Value-Based</a>
+  <a href="/categories/RL/Preliminary/" class="category-chain-item">Preliminary</a>
   
   
 
@@ -1161,7 +1140,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Experience-Replay/" class="print-no-link">#Experience Replay</a>
+        <a href="/tags/ER/" class="print-no-link">#ER</a>
       
         <a href="/tags/Target-Q/" class="print-no-link">#Target Q</a>
       
@@ -1177,32 +1156,32 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Useful Value Learning Skills and Technique</div>
+      <div>Value Learning Technique</div>
       <div>http://example.com/2024/07/15/VLETC/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>作者</div>
+          <div>Author</div>
           <div>木辛</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2024年7月15日</div>
+          <div>Posted on</div>
+          <div>July 15, 2024</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>许可协议</div>
+          <div>Licensed under</div>
           <div>
             
               
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -1225,7 +1204,7 @@
                       <a href="/2024/07/19/PG/" title="Policy Gradient">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Policy Gradient</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -1234,7 +1213,7 @@
                     
                       <a href="/2024/07/15/DQN/" title="DQN">
                         <span class="hidden-mobile">DQN</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -1255,7 +1234,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>目录</span>
+    <span>Table of Contents</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -1316,7 +1295,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -1324,7 +1303,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -1352,16 +1331,16 @@
   
     
       <span id="busuanzi_container_site_pv" style="display: none">
-        总访问量 
+        Views: 
         <span id="busuanzi_value_site_pv"></span>
-         次
+        
       </span>
     
     
       <span id="busuanzi_container_site_uv" style="display: none">
-        总访客数 
+        Visitors: 
         <span id="busuanzi_value_site_uv"></span>
-         人
+        
       </span>
     
     
@@ -1529,7 +1508,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 </body>
 </html>
